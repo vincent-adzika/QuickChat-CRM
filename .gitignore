@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+campaign.db
+.streamlit/secrets.toml

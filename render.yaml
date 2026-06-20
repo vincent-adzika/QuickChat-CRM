@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: whatsapp-crm-batch-sender
+    env: python
+    region: oregon
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.address 0.0.0.0 --server.port $PORT --server.headless true
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: DB_PATH
+        value: /var/data/campaign.db
+    disk:
+      name: whatsapp-crm-data
+      mountPath: /var/data
+      sizeGB: 1
